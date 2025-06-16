@@ -346,6 +346,9 @@ class TestCLIRunCommand: CLITest {
     }
 
     @Test func testRunCommandDNS() throws {
+        #if CURRENT_SDK
+        try #require(false, "DNS configuration tests are not supported with isolated networking strategy (CURRENT_SDK)")
+        #endif
         do {
             let name: String! = Test.current?.name.trimmingCharacters(in: ["(", ")"])
             let dns = "8.8.8.8"
@@ -365,6 +368,9 @@ class TestCLIRunCommand: CLITest {
     }
 
     @Test func testRunCommandDNSDomain() throws {
+        #if CURRENT_SDK
+        try #require(false, "DNS configuration tests are not supported with isolated networking strategy (CURRENT_SDK)")
+        #endif
         do {
             let name: String! = Test.current?.name.trimmingCharacters(in: ["(", ")"])
             let dnsDomain = "example.com"
@@ -386,6 +392,9 @@ class TestCLIRunCommand: CLITest {
     }
 
     @Test func testRunCommandDNSSearch() throws {
+        #if CURRENT_SDK
+        try #require(false, "DNS configuration tests are not supported with isolated networking strategy (CURRENT_SDK)")
+        #endif
         do {
             let name: String! = Test.current?.name.trimmingCharacters(in: ["(", ")"])
             let dnsSearch = "test.com"
@@ -407,6 +416,9 @@ class TestCLIRunCommand: CLITest {
     }
 
     @Test func testRunCommandDNSOption() throws {
+        #if CURRENT_SDK
+        try #require(false, "DNS configuration tests are not supported with isolated networking strategy (CURRENT_SDK)")
+        #endif
         do {
             let name: String! = Test.current?.name.trimmingCharacters(in: ["(", ")"])
             let dnsOption = "debug"

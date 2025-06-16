@@ -24,9 +24,9 @@ import Logging
 import SendableProperty
 import SystemConfiguration
 import XPC
-import vmnet
 
 #if !CURRENT_SDK
+import vmnet
 /// Creates a vmnet network with reservation APIs.
 @available(macOS 16, *)
 public final class ReservedVmnetNetwork: Network {

@@ -63,15 +63,9 @@ struct RuntimeLinuxHelper: AsyncParsableCommand {
 
             log.info("configuring XPC server")
             let interfaceStrategy: any InterfaceStrategy
-            #if !CURRENT_SDK
-            if #available(macOS 16, *) {
-                interfaceStrategy = NonisolatedInterfaceStrategy(log: log)
-            } else {
-                interfaceStrategy = IsolatedInterfaceStrategy()
-            }
-            #else
+            // For CURRENT_SDK=1 (macOS 26.0+), always use IsolatedInterfaceStrategy
+            // This avoids deprecated vmnet_network_ref types and provides compatibility
             interfaceStrategy = IsolatedInterfaceStrategy()
-            #endif
             let server = SandboxService(root: .init(fileURLWithPath: root), interfaceStrategy: interfaceStrategy, log: log)
             let xpc = XPCServer(
                 identifier: machServiceLabel,
